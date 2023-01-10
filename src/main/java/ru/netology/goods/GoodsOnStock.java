@@ -2,11 +2,11 @@ package ru.netology.goods;
 
 public interface GoodsOnStock {
 
-    public boolean setNumberOfGoods(float numberOfGoods);
+    void setNumberOfGoods(float numberOfGoods);
 
-    public float getNumberOfGoods();
+    float getNumberOfGoods();
 
-    public boolean increaseGoodsStock(float number);
+    void increaseGoodsStock(float number);
 
-    public boolean reduceGoodsStock(float number);
+    void reduceGoodsStock(float number);
 }

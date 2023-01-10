@@ -1,44 +1,71 @@
 package ru.netology.selection;
 
+import ru.netology.goods.Goods;
 import ru.netology.menu.MenuDefinition;
 import ru.netology.menu.SystemMenu;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
+
+import static ru.netology.selection.AllGoods.*;
 
 public class GoodsSort {
 
-    MenuDefinition menu = new MenuDefinition();
+    // текущая выборка товара
+    public static ArrayList<Goods> currentGoodsSample = new ArrayList<>();
 
-    public int sortGoods() throws IOException {
+    public static MenuDefinition menu = new MenuDefinition();
+
+    public static void sortGoods() throws IOException {
+
+        initialGoodsSample();
         while (true) {
-            int index = menu.menuIndex(SystemMenu.SHOWCASE_MENU);
-            if (index == 0) return 0;
+            if (menu.menuIndex(SystemMenu.SHOWCASE_MENU) == 0) break;
         }
     }
 
-    public void selectGoods() throws IOException {
+    public static void selectGoodsMenu() throws IOException {
+        while (true) {
+            if (menu.menuIndex(SystemMenu.SELECT_GOODS_MENU) == 0) break;
+        }
+    }
 
-        AllGoods goodsCurrentList = new AllGoods();
-        ArrayList<String> seachParam = new ArrayList<>();
+    public static void sortGoodsMenu() throws IOException {
+        while (true) {
+            if (menu.menuIndex(SystemMenu.SORTING_MENU) == 0) break;
+        }
+    }
+
+    public static void initialGoodsSample() {
+        currentGoodsSample = (ArrayList<Goods>) goods.clone();
+    }
+
+    //Сформировать выборку товаров для заказа
+    public static void selectGoods() {
+
+        ArrayList<String> searchParam = new ArrayList<>();
         ArrayList<String> param;
 
         GoodsSelecting exec = new GoodsSelecting();
 
-        exec.makeHash(AllGoods.goods);
+        exec.makeHash(goods);
 
-        seachParam.add("Наименование товара");
-        seachParam.add("Ключевые слова");
-        seachParam.add("Производитель товара");
-        seachParam.add("Цена от");
-        seachParam.add("Цена до");
+        searchParam.add("Наименование товара");
+        searchParam.add("Ключевые слова");
+        searchParam.add("Производитель товара");
+        searchParam.add("Цена от");
+        searchParam.add("Цена до");
 
         MenuDefinition menu = new MenuDefinition();
-        param = menu.menuList(SystemMenu.SELECT_GOODS_MENU, seachParam);
+        boolean correctAnswer = false;
 
-        exec.setSearchParam(param);
+        while (!correctAnswer) {
+            param = menu.menuList(SystemMenu.SELECT_GOODS_MENU, searchParam);
+            correctAnswer = exec.setSearchParam(param);
+        }
 
-        goodsCurrentList.showGoods(exec.selectBy());
+        exec.selectBy();
+
+        showGoods(currentGoodsSample);
     }
 }

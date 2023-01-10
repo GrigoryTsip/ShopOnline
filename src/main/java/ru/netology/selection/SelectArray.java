@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public interface SelectArray {
 
-    public void setMakeNewIndex(boolean ind);
+    void setMakeNewIndex(boolean ind);
 
-    public void makeHash(ArrayList<Goods> goods);
+    void makeHash(ArrayList<Goods> goods);
 
-    public void setSearchParam(ArrayList<String> param);
+    boolean setSearchParam(ArrayList<String> param);
 
-    public ArrayList<Goods> selectBy();
+    void selectBy();
 }

@@ -10,6 +10,6 @@ public class CompareByVendor implements Comparator<Goods> {
         if (o1 == null || o2 == null) {
             throw new NullPointerException("Not defined object");
         }
-        return o1.getVendor().compareTo(o2.getVendor());
+        return o1.getChild(o1).getVendor().compareTo(o2.getChild(o2).getVendor());
     }
 }

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 public interface SortArray {
 
-    public ArrayList<Goods> sortBy(ArrayList<Goods> listOfGoods,
+    static ArrayList<Goods> sortBy(ArrayList<Goods> listOfGoods,
                                    TypeOfSelection selectBy,
-                                   boolean direction) throws NullPointerException;
+                                   boolean direction) throws NullPointerException {
+        return null;
+    }
 }
