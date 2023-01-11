@@ -82,6 +82,7 @@ public class Ordering {
 
             // удаляем из заказа товары с нулевым количеством
             for (Goods gds : zeroGoods) orderGoods.remove(gds.getGoodsID());
+            currentOrder.setOrderGoods(orderGoods);
 
             System.out.println(currentOrder.toString());
 
