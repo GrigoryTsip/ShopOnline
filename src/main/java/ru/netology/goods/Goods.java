@@ -1,7 +1,5 @@
 package ru.netology.goods;
 
-import jdk.internal.org.jline.utils.Colors;
-
 public class Goods implements GoodsInterface {
 
     protected static int idGoods = 0;
@@ -19,11 +17,13 @@ public class Goods implements GoodsInterface {
     public static final int QUANTITY = 4;
     public static final int RECOMMENDATION = 5;
     public static final int KEYWORDS = 6;
-
+    /*
     public static final String[] goodsColumnMapping = {
             "id", "name", "price",
             "vendor", "numberOfGoods", "keyWords"
     };
+
+     */
 
     public Goods() {
     }
@@ -36,7 +36,7 @@ public class Goods implements GoodsInterface {
     }
 
     public Goods(int id, String name, float price) {
-        this.id = idGoods;
+        this.id = id;
         this.name = name;
         this.price = price;
     }
